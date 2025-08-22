@@ -1,0 +1,20 @@
+# Tuning & settings for NSMS
+capture:
+  interface: null         # overridden by CLI -i; null = required
+  bpf_filter: "tcp or udp or port 53"
+
+detectors:
+  port_scan:
+    enabled: true
+    window_seconds: 20
+    syn_only: true               # count only SYN packets
+    unique_dports_threshold: 10  # alert if src connects to >= this many distinct dest ports in window
+    min_total_syn: 15            # and total SYNs in window meets/exceeds this
+
+  dns_tunnel:
+    enabled: true
+    window_seconds: 60
+    min_queries_per_src: 40      # high-volume DNS queries
+    min_entropy: 3.8             # suspicious label entropy
+    min_qname_len: 45            # long domain names often used by tunnels
+    heavy_txt_threshold: 10      # TXT queries from same src in window
