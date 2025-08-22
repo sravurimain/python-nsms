@@ -1,3 +1,5 @@
+![NSMS dashboard](docs/dashboard.png)
+
 # NSMS — Python Network Security Monitoring System (starter)
 
 This is a minimal, local-only Python NSM sensor with basic detectors:
